@@ -5,6 +5,7 @@ from util import format_naics_code
 from util import format_fair_codes
 from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import Select
+import selenium
 
 
 def select_posted_date(driver, date):
@@ -124,7 +125,10 @@ def select_codes(driver, codes, code_type=None):
         for code in codes:
             if code in page_codes:
                 xpath = f"//input[@name='{page_codes[code][0]}'][@value='{page_codes[code][1]}']"
-                driver.find_element_by_xpath(xpath).click()
+                if code_type != 'naics_codes':
+                    driver.find_element_by_xpath(xpath).click()
+                else:
+                    driver.find_element_by_xpath(xpath).send_keys(selenium.webdriver.common.keys.Keys.SPACE)
 
 
 def change_hidden_date_value(driver, dates, xpaths):

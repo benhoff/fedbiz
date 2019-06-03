@@ -56,7 +56,7 @@ class FedBizOpps:
         self.award_date_end = award_date_end
 
     def _search(self):
-        self.driver = webdriver.Firefox()
+        self.driver = webdriver.Chrome()
         self.driver.get(
             'https://www.fbo.gov/index.php?'
             's=opportunity&mode=list&tab=search&tabmode=list&='

@@ -21,6 +21,7 @@ def rows_to_dictionary(soup):
         page_opportunities['title'] = row.find(
             'div', {'class': 'solt'}
         ).next.strip()
+        page_opportunities['url'] = row.find('a').get('href')
         page_opportunities['solicitation_number'] = row.find(
             'div', {'class': 'soln'}
         ).next.strip()
